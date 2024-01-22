@@ -40,7 +40,7 @@ fetch(forecastURL)
 .then(function (response) {
   return response.json();
 }) 
-.then(function(data) {
+.then(function dayFiveForecast (data) {
   // Target HTML to dynamically update data
   const cityDisplay = document.getElementById('today');
   cityDisplay.className = "card d-flex";
@@ -59,6 +59,7 @@ fetch(forecastURL)
   cityHumidity.textContent = `Humidity: ${data.list[0].main.humidity}%`;
   cityDisplay.appendChild(cityDisplayHeading, cityTemp, cityWind, cityHumidity);
 
+  dayFiveForecast(data);
 })
 
 
