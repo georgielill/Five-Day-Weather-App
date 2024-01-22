@@ -34,6 +34,21 @@ fetch(queryURL)
   let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=f7d34248b47264a3f6da9b533f15ac3a&units=metric'`
 }
 
+// fetch to get 5 day forecast
+
+fetch(forecastURL)
+.then(function (response) {
+  return response.json();
+}) 
+.then(function(data) {
+  // Target HTML to dynamically update data
+  const cityDisplay = document.getElementById('today');
+  cityDisplay.className = "card d-flex";
+  cityDisplay.innerHTML = '';
+  let cityDisplayHeading = document.createElement("h2");
+  cityDisplayHeading.textContent = 
+})
+
 // let searchInputEl = document.querySelector('#search-input');
 
 // let currentWeatherDiv = document.querySelector(".current-weather");
