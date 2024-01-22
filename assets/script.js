@@ -22,6 +22,18 @@ function todayForecast(cityName) {
   let queryURL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&weather&limit=5&appid=${apiKey}`
 }
 
+//fetch to get latitude and longitude
+
+fetch(queryURL)
+.then(function (response) {
+  return response.json();
+})
+.then(function (data)) {
+  let latitude = data[0].lat;
+  let longitude = data[0].lon;
+  let forecastURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=f7d34248b47264a3f6da9b533f15ac3a&units=metric'`
+}
+
 // let searchInputEl = document.querySelector('#search-input');
 
 // let currentWeatherDiv = document.querySelector(".current-weather");
