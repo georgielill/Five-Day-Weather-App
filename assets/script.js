@@ -17,6 +17,10 @@ searchButton.addEventListener("click", function (e) {
   addToStorage(cityName);
 });
 
+//current weather function
+function todayForecast(cityName) {
+  let queryURL = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&weather&limit=5&appid=${apiKey}`
+}
 
 // let searchInputEl = document.querySelector('#search-input');
 
