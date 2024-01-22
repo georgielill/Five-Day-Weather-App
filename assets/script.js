@@ -46,8 +46,21 @@ fetch(forecastURL)
   cityDisplay.className = "card d-flex";
   cityDisplay.innerHTML = '';
   let cityDisplayHeading = document.createElement("h2");
-  cityDisplayHeading.textContent = 
+  cityDisplayHeading.textContent = `${cityName} (${dayjs.format(DD/MM/YYYY)})`;
+  let weatherIconSrc = data.list[0].weather[0].icon;
+  let weatherIcon = document.createElement('img');
+  weatherIcon.src = 'https://openweathermap.org/img/wn/${weatherIconSrc}.png'
+  cityDisplayHeading.appendChild(weatherIcon);
+  let cityTemp = document.createElement('p');
+  let cityWind = document.createElement('p');
+  let cityHumidity = document.createElement('p');
+  cityTemp.textContent = `Temp: ${parseInt(data.list[0].main.temp -273.15)}°C`
+  cityWind.textContent = `Wind: ${data.list[0].wind.speed}KPH`
+  cityHumidity.textContent = `Humidity: ${data.list[0].main.humidity}%`;
+  cityDisplay.appendChild(cityDisplayHeading, cityTemp, cityWind, cityHumidity);
+
 })
+
 
 // let searchInputEl = document.querySelector('#search-input');
 
