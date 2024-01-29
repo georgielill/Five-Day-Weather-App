@@ -1893,3 +1893,7 @@ label form [type='radio'] {
   padding-left: 20px;
   align-items: center;
 }
+
+#current-weather {
+  border: #000000;
+}

@@ -189,11 +189,18 @@ function displayForecast(data) {
 }
 
 function addToSearchHistory(cityName) {
-    const historyItem = document.createElement('div');
+  const existingButton = Array.from(searchHistory.querySelectorAll('button[data-city]')).find(button => { 
+    return button.dataset.city.toLowerCase() === cityNameLower;
+  });
+  
+  if (!existingButton) {
+    const historyItem = document.createElement('button');
     historyItem.textContent = cityName;
     historyItem.classList.add('search-history-item');
+    historyItem.dataset.city = cityName;
     historyItem.addEventListener('click', function () {
         getWeather(cityName);
     });
     searchHistory.prepend(historyItem); // Add new search history item at the beginning
+  }
 }
