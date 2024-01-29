@@ -14,18 +14,20 @@ searchForm.addEventListener('submit', function (e) {
 });
 
 function getWeather(cityName) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`)
+  const cityNameLower = cityName.toLowerCase();
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityNameLower}&appid=${apiKey}&units=metric`)
         .then(response => response.json())
         .then(data => {
             displayCurrentWeather(data);
-            addToSearchHistory(cityName);
+            addToSearchHistory(cityNameLower);
         })
         .catch(error => {
             console.error('Error fetching current weather:', error);
             currentWeather.innerHTML = 'Error fetching current weather';
         });
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=metric`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityNameLower}&appid=${apiKey}&units=metric`)
         .then(response => response.json())
         .then(data => {
             displayForecast(data);
@@ -78,19 +80,30 @@ function displayForecast(data) {
     }
 }
 
-function addToSearchHistory(cityName) {
+function addToSearchHistory(cityNameLower) {
+  console.log("City Name Lower: ", cityNameLower);
   const existingButton = Array.from(searchHistory.querySelectorAll('button[data-city]')).find(button => { 
     return button.dataset.city.toLowerCase() === cityNameLower;
   });
   
   if (!existingButton) {
     const historyItem = document.createElement('button');
-    historyItem.textContent = cityName;
+    historyItem.textContent = cityNameLower;
     historyItem.classList.add('search-history-item');
-    historyItem.dataset.city = cityName;
+    historyItem.dataset.city = cityNameLower;
     historyItem.addEventListener('click', function () {
-        getWeather(cityName);
+        getWeather(cityNameLower);
     });
     searchHistory.prepend(historyItem); // Add new search history item at the beginning
+
+    addToLocalStorage(cityNameLower);
   }
+}
+
+function addToLocalStorage(cityNameLower) {
+  let cities = JSON.parse(localStorage.getItem('cities')) || [];
+  console.log("Cities from Local Storage: ", cities);
+
+  cities.push(cityNameLower);
+  localStorage.setItem('cities', JSON.stringify(cities));
 }
