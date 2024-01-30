@@ -51,8 +51,9 @@ function displayCurrentWeather(data) {
         <h2>${cityName} (${date})</h2>
         <img src="${weatherIcon}" alt="Weather Icon">
         <p>Temperature: ${temperature}°C</p>
+        <p>Wind: ${windSpeed} KPH</p>
         <p>Humidity: ${humidity}%</p>
-        <p>Wind Speed: ${windSpeed} m/s</p>
+        
     `;
 }
 
@@ -73,8 +74,8 @@ function displayForecast(data) {
             <h3>${date}</h3>
             <img src="${weatherIcon}" alt="Weather Icon">
             <p>Temperature: ${temperature}°C</p>
-            <p>Humidity: ${humidity}%</p>
-            <p>Speed: ${speed}KPH</p>
+            <p>Wind: ${speed} KPH</p>
+            <p>Humidity: ${humidity}%</p> 
         `;
         forecastContainer.appendChild(forecastElement);
     }
