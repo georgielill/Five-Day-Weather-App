@@ -89,7 +89,7 @@ function addToSearchHistory(cityNameLower) {
   if (!existingButton) {
     const historyItem = document.createElement('button');
     historyItem.textContent = cityNameLower;
-    historyItem.classList.add('search-history-item');
+    historyItem.classList.add('search-history-item', 'search-button');
     historyItem.dataset.city = cityNameLower;
     historyItem.addEventListener('click', function () {
         getWeather(cityNameLower);
