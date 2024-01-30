@@ -21,3 +21,5 @@ CSS: Provides styling to enhance the visual presentation of the application.
 JavaScript: Implements functionality for fetching data from the OpenWeatherMap API, updating the UI with weather information, and managing the search history.
 
 OpenWeatherMap API: Provides weather data including current weather conditions and forecasts for cities around the world.
+
+<img width="1440" alt="Screenshot 2024-01-30 at 22 16 34" src="https://github.com/georgielill/Five-Day-Weather-App/assets/47761199/77e342f1-0449-45de-a7fe-0ee7edf928de">
