@@ -1,6 +1,7 @@
 # Five-Day-Weather-App
 
 Weather Dashboard
+<br>
 The Weather Dashboard is a web application that provides users with current weather conditions and a 5-day forecast for a given city. This project utilizes HTML, CSS, and JavaScript to fetch weather data from the OpenWeatherMap API and display it in a user-friendly interface.
 
 Features
